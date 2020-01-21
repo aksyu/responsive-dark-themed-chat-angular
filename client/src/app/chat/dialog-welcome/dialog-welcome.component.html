@@ -1,0 +1,48 @@
+<h2 mat-dialog-title [attr.align]="'center'">New User</h2>
+
+<mat-dialog-content>
+  <form #welcomeForm="ngForm">
+    <input type='text' name="name" class="input" placeholder="Enter Your Name*" [(ngModel)]="user.name" maxlength="25">
+    <div class="big-layer"></div>
+    <mat-radio-group name="avatar" [(ngModel)]="avatar.source">
+      <div class="rows-group">
+        <div class="rows-group__row">
+          <div class="row-title">
+            <mat-radio-button value="random">
+              Random Avatar
+            </mat-radio-button>
+          </div>
+          <div class="row-data">
+            <div class="data-group">
+              <img [src]="avatar.randomAvatarUrl" alt="avatar" class="avatar">
+              <div class="small-layer"></div>
+              <a  class="icon-refresh" (click)="setRandomAvatar()">
+                <mat-icon>refresh</mat-icon>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="rows-group__row rows-group__row--baseline">
+          <div class="row-title">
+            <mat-radio-button value="instagram">
+              Instagram Profile
+            </mat-radio-button>
+          </div>
+          <div class="row-data">
+            <div class="input-group">
+              <input type="text" name="instagramNickname" class="input input-group__input" placeholder="Your nickname" [(ngModel)]="instagramNickname" (ngModelChange)="setInstagramAvatar()">
+            </div>
+            <div class="small-layer"></div>
+            <img [src]="avatar.instagramAvatarUrl" alt="avatar" class="avatar avatar--centered" *ngIf="avatar.instagramAvatarUrl">
+          </div>
+        </div>
+      </div>
+    </mat-radio-group>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions [attr.align]="'center'">
+  <button type="button" class="btn" *ngIf="user.name" (click)="onSave()">
+    Let's Chat
+  </button>
+</mat-dialog-actions>

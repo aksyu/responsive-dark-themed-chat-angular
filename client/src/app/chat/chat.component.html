@@ -1,0 +1,78 @@
+<div class="page-wrapper" [class.dark]="currentMode === mode.NIGHT">
+  <ng-container *ngIf="messages.length">
+    <div class="mode-switcher-wrapper">
+      <app-mode-switcher></app-mode-switcher>
+    </div>
+    
+    <div class="chat" [class.dark]="currentMode === mode.NIGHT">
+      <div class="chat-title data-group">
+        <div class="avatar">
+          <img [src]="user.avatar" />
+        </div>
+        <div>
+          <div class="chat-title__name">
+            {{user.name}}
+          </div>
+          <div class="chat-title__detail">
+            You
+          </div>
+        </div>
+      </div>
+      <div class="chat-messages" #chatMessagesContainer>
+        <div class="chat-message__content">
+          <div class="message" *ngFor="let message of messages; let i = index">
+            <!-- if user's message -->
+            <ng-container *ngIf="message.action === action.MESSAGE">
+              <div class="message-item" [class.message--out]="message.from.id === user.id" [class.message--in]="message.from.id !== user.id">
+                <div class="message__container">
+                  <ng-container *ngIf="message.from.id !== user.id">
+                    <div class="message__container__line" *ngIf=" message.from.id !== messages[i-1].from.id || messages[i-1].action !== action.MESSAGE">
+                      <div class="message__avatar" >
+                        <img [src]="message.from.avatar">
+                      </div>
+                      <div class="message__name">
+                        {{message.from.name}}
+                      </div>
+                    </div>
+                  </ng-container>
+                  <div class="message__content">
+                    {{message.content}}
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+
+            <!-- if user's action -->
+            <ng-container *ngIf="message.action !== action.MESSAGE">
+              <div class="message__notification">
+                <b>{{message.from?.name}}</b>
+                {{ message.action === action.JOINED ? 'joined to' : 'left' }} the conversation.
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="chat-message__box">
+        <textarea #inputMessage
+        maxlength="140"
+        class="message-textarea"
+        placeholder="Type your message"
+        [(ngModel)]="newMessage"
+        (keyup.enter)="sendNewMessage()"></textarea>
+        <button type="button" class="message-btn" (click)="sendNewMessage();">
+          Send
+        </button>
+      </div>
+    </div>
+
+    <div class="made-with-love">
+      Made with
+      <i>♥</i>
+      by
+      <a target="_blank" href="https://github.com/aksyu">
+        Ksenia Abakumova
+      </a>
+    </div>
+  </ng-container>
+</div>
+

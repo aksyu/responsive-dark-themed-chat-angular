@@ -1,0 +1,13 @@
+{
+  "files": [
+    "src/*.ts",
+    "src/model/*.ts",
+    "src/api/*.ts"
+  ],
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "target": "es5",
+    "lib": ["dom", "es2015", "es2016", "es2017"],
+  },
+  "compileOnSave": true,
+}

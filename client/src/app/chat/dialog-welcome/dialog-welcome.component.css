@@ -1,0 +1,26 @@
+.avatar {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.icon-refresh {
+  color: grey;
+}
+
+@media only screen and (max-width: 560px) {
+  .rows-group__row {
+    flex-direction: column;
+  }
+
+  .rows-group__row .row-data {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .avatar--centered {
+    display: block;
+    margin: 10px auto;
+  }
+}
