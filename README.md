@@ -3,7 +3,7 @@ Responsive Dark-Themed Chat Example Using Angular6 and Socket.io
 
 ## 
 
-![](https://kabakumova.com/media/chat-demo2.gif?raw=true)
+![](https://raw.githubusercontent.com/aksyu/chat-angular/master/server/chat-demo.gif)
 
 ## Getting started
 
